@@ -1,0 +1,9 @@
+<div>
+  <total-profit-filter (filterChanged)="onFilterChanged($event)"></total-profit-filter>
+  <div>
+    <span *ngIf="totalProfit != null">
+      Total profit in {{selectedCountry}} for {{selectedYear}} year: {{totalProfit}} .
+    </span>
+  </div>
+</div>
+

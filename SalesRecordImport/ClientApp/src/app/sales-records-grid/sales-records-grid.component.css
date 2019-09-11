@@ -1,0 +1,15 @@
+th.sortable {
+  cursor: pointer
+}
+
+th{
+  text-align: center
+}
+
+.table{
+  font-size: 10px
+}
+
+.action-column {
+  white-space: nowrap
+}

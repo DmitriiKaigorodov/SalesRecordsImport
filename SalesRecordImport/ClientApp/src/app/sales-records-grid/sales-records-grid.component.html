@@ -1,0 +1,48 @@
+<table class="table col-12">
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Item type</th>
+      <th>Sales Channel</th>
+      <th>Order Priority</th>
+      <th (click)="order('orderDate')" class="sortable">
+        Order Date
+        <i [className]="ascOrder ? 'fa fa-angle-up' : 'fa fa-angle-down'"></i>
+      </th>
+      <th>Order Id</th>
+      <th>Ship Date</th>
+      <th>Units Sold</th>
+      <th>Unit Price</th>
+      <th>Unit Cost</th>
+      <th>Total Revenue</th>
+      <th>Total Cost</th>
+      <th>Total profit</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of data | paginate: paginateConfig">
+      <td>{{record.region}}</td>
+      <td>{{record.country}}</td>
+      <td>{{record.itemType}}</td>
+      <td>{{SalesChannel[record.salesChannel]}}</td>
+      <td>{{OrderPriority[record.orderPriority]}}</td>
+      <td>{{record.orderDate | date:'shortDate'}}</td>
+      <td>{{record.externalId}}</td>
+      <td>{{record.shipDate | date:'shortDate'}}</td>
+      <td>{{record.unitsSold}}</td>
+      <td>{{record.unitPrice}}</td>
+      <td>{{record.unitCost}}</td>
+      <td>{{record.totalRevenue}}</td>
+      <td>{{record.totalCost}}</td>
+      <td>{{record.totalProfit}}</td>
+      <td class="action-column">
+        <edit-record-form [salesRecord]="record"></edit-record-form>
+        <button class="btn btn-danger btn-xs" data-title="Delete"
+                (click)="delete(record.id)" style="margin-left: 10px">
+          <i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<h2>Upload your sales records</h2>
+<csv-import (csvUploaded)="onCsvUploaded($event)"></csv-import>
+<div>
+  <country-filter (filterChanged)="onFilterChanged($event)"></country-filter>
+  <sales-records-grid [data]="records" [paginateConfig]="paginateConfig" (orderClicked)="orderClicked($event)"></sales-records-grid>
+  <div class="col-lg-12  form-inline">
+    <div class="col-lg-4">
+      Records per page:
+      <select [(ngModel)]="salesRecordsOptions.size" (change)="onPageSizeChanged($event)" class="form-control">
+        <option value="10" [selected]="salesRecordsOptions.size == 10">10</option>
+        <option value="25" [selected]="salesRecordsOptions.size == 20">25</option>
+        <option value="50" [selected]="salesRecordsOptions.size == 50">50</option>
+        <option value="100" [selected]="salesRecordsOptions.size == 100">100</option>
+      </select>
+    </div>
+    <div class="col-lg-8">
+      <pagination-controls (pageChange)="onPageChanged($event)"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+

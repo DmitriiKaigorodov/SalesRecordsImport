@@ -1,0 +1,156 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update record</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #updateForm="ngForm" (ngSubmit)="updateForm.form.valid && submitForm()" id="updateForm">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col">
+            <label for="country">Country</label>
+            <input id="country" #country="ngModel" name="country" type="text" class="form-control" [(ngModel)]="editableSalesRecord.country" required />
+            <div *ngIf="updateForm.submitted && country.invalid" class="alert alert-danger">
+              <div *ngIf="country.errors.required">Country is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="region">Region</label>
+            <input id="region" #region="ngModel" name="region" type="text" class="form-control" [(ngModel)]="editableSalesRecord.region" required />
+            <div *ngIf="updateForm.submitted && region.invalid" class="alert alert-danger">
+              <div *ngIf="region.errors.required">Region is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="itemType">Item type</label>
+            <input id="itemType" #itemType="ngModel" name="itemType" type="text" class="form-control" [(ngModel)]="editableSalesRecord.itemType" required />
+            <div *ngIf="updateForm.submitted && itemType.invalid" class="alert alert-danger">
+              <div *ngIf="itemType.errors.required">Item type is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="salesChannel">Sales channel</label>
+            <select id="salesChannel" #salesChannel="ngModel" name="salesChannel" class="form-control" [(ngModel)]="editableSalesRecord.salesChannel" required>
+              <option value="0">Offline</option>
+              <option value="1">Online</option>
+            </select>
+            <div *ngIf="updateForm.submitted && salesChannel.invalid" class="alert alert-danger">
+              <div *ngIf="salesChannel.errors.required">Sales Channel is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="orderPriority">Order priority</label>
+            <select id="orderPriority" #orderPriority="ngModel" name="orderPriority" class="form-control" [(ngModel)]="editableSalesRecord.orderPriority" required>
+              <option value="0">L</option>
+              <option value="1">M</option>
+              <option value="2">H</option>
+              <option value="3">C</option>
+            </select>
+            <div *ngIf="updateForm.submitted && orderPriority.invalid" class="alert alert-danger">
+              <div *ngIf="orderPriority.errors.required">Order priority is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="orderDate">Order Date</label>
+            <div class="input-group">
+              <input id="orderDate" class="form-control" placeholder="yyyy-mm-dd" name="orderDate"
+                     ngbDatepicker #orderDate="ngbDatepicker" [(ngModel)]="editableSalesRecord.orderDate" required>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="orderDate.toggle()" type="button"></button>
+              </div>
+            </div>
+            <div *ngIf="updateForm.submitted && orderDate.invalid" class="alert alert-danger">
+              <div *ngIf="orderDate.errors.required">Order date is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="orderId">Order Id</label>
+            <input id="orderId" #orderId="ngModel" name="orderId" type="number" class="form-control"
+                   [(ngModel)]="editableSalesRecord.externalId" required />
+            <div *ngIf="updateForm.submitted && orderId.invalid" class="alert alert-danger">
+              <div *ngIf="orderId.errors.required">Order Id is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="shipDate">Ship date</label>
+            <div class="input-group">
+              <input id="shipDate" class="form-control" placeholder="yyyy-mm-dd" name="shipDate"
+                     ngbDatepicker #shipDate="ngbDatepicker" [(ngModel)]="editableSalesRecord.shipDate" required>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="shipDate.toggle()" type="button"></button>
+              </div>
+            </div>
+            <div *ngIf="updateForm.submitted && shipDate.invalid" class="alert alert-danger">
+              <div *ngIf="shipDate.errors.required">Ship date is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="unitsSold">Units sold</label>
+            <input id="unitsSold" #unitsSold="ngModel" name="unitsSold" type="number" class="form-control"
+                   [(ngModel)]="editableSalesRecord.unitsSold" required />
+            <div *ngIf="updateForm.submitted && unitsSold.invalid" class="alert alert-danger">
+              <div *ngIf="unitsSold.errors.required">Units sold is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="unitPrice">Unit price</label>
+            <input id="unitPrice" #unitPrice="ngModel" name="unitPrice" type="number" class="form-control"
+                   [(ngModel)]="editableSalesRecord.unitPrice" required />
+            <div *ngIf="updateForm.submitted && unitPrice.invalid" class="alert alert-danger">
+              <div *ngIf="unitPrice.errors.required">Unit price is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="unitCost">Unit cost</label>
+            <input id="unitCost" #unitCost="ngModel" name="unitCost" type="number" class="form-control"
+                   [(ngModel)]="editableSalesRecord.unitCost" required />
+            <div *ngIf="updateForm.submitted && unitCost.invalid" class="alert alert-danger">
+              <div *ngIf="unitCost.errors.required">Unit cost is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="totalRevenue">Total Revenue</label>
+            <input id="totalRevenue" #totalRevenue="ngModel" name="totalRevenue" type="number" class="form-control"
+                   [ngModel]="editableSalesRecord.totalRevenue" required />
+            <div *ngIf="updateForm.submitted && totalRevenue.invalid" class="alert alert-danger">
+              <div *ngIf="totalRevenue.errors.required">Total Revenue is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="totalCost">Total Cost</label>
+            <input id="totalCost" #totalCost="ngModel" name="totalCost" type="number" class="form-control"
+                   [(ngModel)]="editableSalesRecord.totalCost" required />
+            <div *ngIf="updateForm.submitted && totalCost.invalid" class="alert alert-danger">
+              <div *ngIf="totalCost.errors.required">Total Cost is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="totalProfit">Total Profit</label>
+            <input id="totalProfit" #totalProfit="ngModel" name="totalProfit" type="number" class="form-control" [(ngModel)]="editableSalesRecord.totalProfit" />
+            <div *ngIf="updateForm.submitted && totalProfit.invalid" class="alert alert-danger">
+              <div *ngIf="totalProfit.errors.required">Total Profit is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-dark" form="updateForm">Save</button>
+  </div>
+</ng-template>
+<button class="btn btn-primary btn-xs" data-title="Edit" (click)="open(content)"><i class="fa fa-pencil"></i></button>

@@ -1,0 +1,4 @@
+
+<select [(ngModel)]="selectedYear" (ngModelChange)="selectedYearChanged.emit(selectedYear)" class="form-control">
+  <option *ngFor="let year of displayYears" value="{{year}}" [selected]="year == '2019'">{{year}}</option>
+</select>

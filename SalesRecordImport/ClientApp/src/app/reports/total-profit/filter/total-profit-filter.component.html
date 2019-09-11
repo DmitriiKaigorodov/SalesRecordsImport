@@ -1,0 +1,10 @@
+<div>
+  <div class="input-group">
+    <label>Year:</label>
+    <year-picker name="total-profit-year-picker" ngDefaultControl [(ngModel)]="filter.year"></year-picker>
+    <input class="form-control filter-input" placeholder="Country..." [(ngModel)]="filter.country" />
+    <span class="input-group-btn">
+      <button class="btn btn-info" (click)="apply()">Get report</button>
+    </span>
+  </div>
+</div>

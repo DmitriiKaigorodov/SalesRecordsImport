@@ -1,0 +1,8 @@
+<div class="center">
+  <loader [active]="loading"></loader>
+  <label class="btn btn-info" [ngClass]="{ disabled: loading }">
+    <span>Select CSV file.</span>
+    <input type="file" style="display: none" id="csv-upload" name="upload"
+           accept=".csv" (change)="onCsvSelected($event)" [disabled]="loading">
+  </label>
+</div>

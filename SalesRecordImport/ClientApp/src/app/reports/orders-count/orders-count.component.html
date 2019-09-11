@@ -1,0 +1,8 @@
+<div>
+  <orders-count-filter (filterChanged)="onFilterChanged($event)"></orders-count-filter>
+  <div>
+    <span *ngIf="ordersCount != null">
+      Orders in {{filter.country}} for {{filter.year}} year: {{ordersCount}}.
+    </span>
+  </div>
+</div>
